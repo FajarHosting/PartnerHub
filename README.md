@@ -1,27 +1,34 @@
 # PartnerHub Frontend
 
-Frontend-first B2B reseller/partner SaaS UI prototype.
+Professional B2B digital-product reseller/partner SaaS frontend prototype.
 
 ## Scope
-- React + TypeScript + Vite
-- Responsive desktop/tablet/mobile UI
-- Partner portal + Admin console
-- Mock data isolated under `src/data`
-- Mock adapter isolated under `src/services/mockApi.ts`
-- No supplier API integration
-- No production authentication
-- No real payment gateway
-- No supplier credentials or production secrets
 
-## Run
+This repository is frontend-first. It contains UI/UX, reusable components, responsive layouts, mock data, and placeholder integration surfaces only.
+
+It does **not** contain a production supplier API, payment gateway, supplier credentials, production authentication, or real transaction processing.
+
+## Development
+
 ```bash
 npm install
 npm run dev
 ```
 
-## Architecture note
-The frontend is intentionally shaped for a later integration path:
+## Build
 
-`PartnerHub frontend → existing web backend → existing supplier adapter/services → supplier API`
+```bash
+npm run build
+npm run preview
+```
 
-Do not place supplier credentials in this repository. Replace the mock adapter with the existing backend contract during the integration phase without changing the supplier system itself.
+## Deployment
+
+- **Vercel/local:** Vite uses `/` as the base path.
+- **GitHub Pages:** GitHub Actions sets the Vite base path to `/PartnerHub/` automatically.
+
+This keeps the same repository deployable to both Vercel and `https://fajarhosting.github.io/PartnerHub/`.
+
+## Architecture
+
+Mock data lives under `src/data/` and the mock service layer under `src/services/`. The intended next phase is to replace that service boundary with calls to the existing backend/supplier adapter without redesigning the frontend.
